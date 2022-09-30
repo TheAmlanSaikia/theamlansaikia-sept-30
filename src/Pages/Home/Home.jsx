@@ -7,10 +7,10 @@ import { Button, Modal } from "../../Components";
  */
 const Home = () => {
   const [open, setOpen] = useState(false);
-  const setModal =()=> setOpen(!open);
+  const setModal = () => setOpen(!open);
   return (
     <div>
-      <Button  setModal={setModal} />
+      <Button setModal={setModal} />
       {open && <Modal open={open} setOpen={setOpen} />}
     </div>
   );
