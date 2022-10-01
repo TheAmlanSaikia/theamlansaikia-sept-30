@@ -10,7 +10,24 @@ import { useState } from "react";
 
 const Modal = ({ open, setOpen }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [ textValue, setTextValue] = useState(0);
+  const [textValue, setTextValue] = useState(0);
+  const [imageFile, setImageFile] = useState(null);
+
+  /**
+   *
+   * @param {event} e
+   * returns setState to the image file;
+   */
+
+  const uploadImageFile = (e) => {
+    setImageFile(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const submitData =(e) =>{
+    setOpen(false);
+    setImageFile(null);
+  }
+
   return (
     <>
       <div className={styles.modalBody}>
@@ -23,25 +40,43 @@ const Modal = ({ open, setOpen }) => {
         <section className={styles.middleSection}>
           <div className={styles.profileContainer}>
             <UserProfile />
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className={styles.visibilityBtn}>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className={styles.visibilityBtn}>
               <span class='material-icons'>public</span>
               Public
               <span class='material-icons'>expand_more</span>
             </button>
-            {dropdownOpen && <DropDown /> }
+            {dropdownOpen && <DropDown />}
           </div>
           <div className={styles.inputBox}>
             <textarea
               className={styles.input}
               placeholder='Whats Happening..'
-              onChange={(e)=> setTextValue(e.target.value)}
+              onChange={(e) => setTextValue(e.target.value)}
             />
-            <span className={styles.wordCount}>{textValue.length}/250</span>
+            <span className={styles.wordCount}>
+              {textValue.length ? textValue.length : 0}/250
+            </span>
           </div>
+          {imageFile && (
+            <div className={styles.imageBox}>
+              <img
+                src={imageFile && imageFile}
+                className={styles.responsiveImage}
+                alt='Upload'
+              />
+            </div>
+          )}
         </section>
         <section className={styles.bottomSection}>
           <div className={styles.buttonsBox}>
-            <input type='file' id='upload-btn' hidden />
+            <input
+              type='file'
+              id='upload-btn'
+              hidden
+              onChange={uploadImageFile}
+            />
             <label for='upload-btn' className={styles.uploadButton}>
               <span class='material-icons'>image</span>
             </label>
@@ -50,7 +85,7 @@ const Modal = ({ open, setOpen }) => {
               <span class='material-icons'>tag_faces</span>
             </label>
           </div>
-          <button className={styles.sendBtn}>
+          <button onClick={submitData} className={styles.sendBtn}>
             Send Post <span class='material-icons'>send</span>
           </button>
         </section>
