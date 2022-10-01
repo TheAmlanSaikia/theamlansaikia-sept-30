@@ -1,6 +1,7 @@
 <h1>Modal Component</h1>
 <p> Modal component as a part of the assignmebt.</p>
-
+<a href="september30tweetmodal.netlify.app" target="_blank">Live Site</a>
+ 
 <h4>Technologies used</h4>
 <ul>
 <li>HTML</li>
