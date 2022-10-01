@@ -1,4 +1,8 @@
 import styles from "./UserProfile.module.css";
+/**
+ * 
+ * @returns UserImage and Name Component
+ */
 
 const UserProfile = () => {
   return (

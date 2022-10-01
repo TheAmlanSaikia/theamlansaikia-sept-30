@@ -23,10 +23,16 @@ const Modal = ({ open, setOpen }) => {
     setImageFile(URL.createObjectURL(e.target.files[0]));
   };
 
-  const submitData =(e) =>{
+  /**
+   *
+   * @param {}
+   * Triggers submission
+   */
+
+  const submitData = () => {
     setOpen(false);
     setImageFile(null);
-  }
+  };
 
   return (
     <>

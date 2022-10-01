@@ -5,7 +5,11 @@ import styles from "./Button.module.css";
  * @returns Button Component
  */
 const Button = ({ setModal }) => {
-  return <button onClick={setModal} className={styles.btn}>Click Here!</button>;
+  return (
+    <button onClick={setModal} className={styles.btn}>
+      Click Here!
+    </button>
+  );
 };
 
 export { Button };
